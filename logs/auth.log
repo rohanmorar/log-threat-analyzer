@@ -1,0 +1,20 @@
+Jan 15 02:01:01 kali sshd[1001]: Accepted password for deploy from 10.0.0.5 port 22 ssh2
+Jan 15 02:01:45 kali sshd[1002]: Failed password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:01:46 kali sshd[1003]: Failed password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:01:47 kali sshd[1004]: Failed password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:01:48 kali sshd[1005]: Failed password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:01:49 kali sshd[1006]: Failed password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:01:50 kali sshd[1007]: Failed password for root from 192.168.1.50 port 22 ssh2
+Jan 15 02:02:10 kali sshd[1008]: Accepted password for deploy from 10.0.0.5 port 22 ssh2
+Jan 15 02:05:00 kali sshd[1009]: Failed password for admin from 203.0.113.7 port 22 ssh2
+Jan 15 02:05:01 kali sshd[1010]: Failed password for admin from 203.0.113.7 port 22 ssh2
+Jan 15 02:05:02 kali sshd[1011]: Failed password for admin from 203.0.113.7 port 22 ssh2
+Jan 15 02:10:00 kali sudo[1012]: deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/bash
+Jan 15 02:10:05 kali sudo[1013]: FAILED su for root by www-data
+Jan 15 02:15:00 kali sshd[1014]: Failed password for invalid user hacker from 198.51.100.9 port 22 ssh2
+Jan 15 02:15:01 kali sshd[1015]: Failed password for invalid user hacker from 198.51.100.9 port 22 ssh2
+Jan 15 02:15:02 kali sshd[1016]: Failed password for invalid user hacker from 198.51.100.9 port 22 ssh2
+Jan 15 02:15:03 kali sshd[1017]: Failed password for invalid user hacker from 198.51.100.9 port 22 ssh2
+Jan 15 02:15:04 kali sshd[1018]: Failed password for invalid user hacker from 198.51.100.9 port 22 ssh2
+Jan 15 02:20:00 kali sshd[1019]: Accepted publickey for deploy from 10.0.0.5 port 22 ssh2
+Jan 15 02:25:00 kali sshd[1020]: Failed password for root from 192.168.1.50 port 22 ssh2
