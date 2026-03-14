@@ -1,12 +1,13 @@
 # main.py
 
+import argparse
 from colorama import Fore, Style, init
 from parser import parse_log_file
 from alerter import analyze_events
 from utils import write_json_report, get_timestamp
 from config import LOG_FILE_PATH, OUTPUT_FILE_PATH, BRUTE_FORCE_THRESHOLD
 
-init(autoreset=True)  # colorama setup
+init(autoreset=True)
 
 def print_banner():
     print(Fore.CYAN + """
@@ -16,19 +17,42 @@ def print_banner():
 ╚══════════════════════════════════════╝
 """)
 
+def get_args():
+    parser = argparse.ArgumentParser(
+        description="Analyze Linux auth logs for brute-force and escalation events."
+    )
+    parser.add_argument(
+        "--logfile",
+        type=str,
+        default=LOG_FILE_PATH,
+        help=f"Path to the log file to analyze (default: {LOG_FILE_PATH})"
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default=OUTPUT_FILE_PATH,
+        help=f"Path to write the JSON report (default: {OUTPUT_FILE_PATH})"
+    )
+    parser.add_argument(
+        "--threshold",
+        type=int,
+        default=BRUTE_FORCE_THRESHOLD,
+        help=f"Failed login attempts before flagging an IP (default: {BRUTE_FORCE_THRESHOLD})"
+    )
+    return parser.parse_args()
+
 def main():
     print_banner()
-    print(f"[*] Analyzing: {LOG_FILE_PATH}")
-    print(f"[*] Brute force threshold: {BRUTE_FORCE_THRESHOLD} attempts\n")
+    args = get_args()
 
-    # Step 1: Parse the log file into structured events
-    events = parse_log_file(LOG_FILE_PATH)
+    print(f"[*] Analyzing: {args.logfile}")
+    print(f"[*] Brute force threshold: {args.threshold} attempts\n")
+
+    events = parse_log_file(args.logfile)
     print(f"[*] Total events matched: {len(events)}")
 
-    # Step 2: Run analysis and correlation
-    results = analyze_events(events)
+    results = analyze_events(events, threshold=args.threshold)
 
-    # Step 3: Print human-readable summary to terminal
     print("\n" + "="*40)
     print(Fore.WHITE + "  EVENT SUMMARY")
     print("="*40)
@@ -52,16 +76,15 @@ def main():
         for e in results["escalations"]:
             print(f"  Line {e['line']}: [{e['type']}] {e['raw']}")
 
-    # Step 4: Write structured JSON report
     report = {
         "meta": {
             "timestamp": get_timestamp(),
-            "log_file": LOG_FILE_PATH,
-            "threshold_used": BRUTE_FORCE_THRESHOLD,
+            "log_file": args.logfile,
+            "threshold_used": args.threshold,
         },
         "results": results,
     }
-    write_json_report(report, OUTPUT_FILE_PATH)
+    write_json_report(report, args.output)
 
 if __name__ == "__main__":
     main()

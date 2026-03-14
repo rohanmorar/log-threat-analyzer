@@ -1,13 +1,12 @@
 # alerter.py
 
 from collections import defaultdict
-from config import BRUTE_FORCE_THRESHOLD
 
-def analyze_events(events: list[dict]) -> dict:
+def analyze_events(events: list[dict], threshold: int = 5) -> dict:
     """
     Takes a list of parsed events and produces:
     - A per-IP failure count
-    - A list of IPs that crossed the brute force threshold
+    - IPs that crossed the brute force threshold
     - A summary of all event type counts
     - A list of privilege escalation events
     """
@@ -20,7 +19,6 @@ def analyze_events(events: list[dict]) -> dict:
         event_type_counts[etype] += 1
 
         if etype == "FAILED_LOGIN":
-            # groups[1] is the IP address captured by our regex
             ip = event["groups"][1]
             failed_logins_by_ip[ip] += 1
 
@@ -32,11 +30,10 @@ def analyze_events(events: list[dict]) -> dict:
                 "raw": event["raw"],
             })
 
-    # Flag IPs that exceeded the threshold
     flagged_ips = {
         ip: count
         for ip, count in failed_logins_by_ip.items()
-        if count >= BRUTE_FORCE_THRESHOLD
+        if count >= threshold
     }
 
     return {
