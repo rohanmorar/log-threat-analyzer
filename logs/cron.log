@@ -1,0 +1,63 @@
+──────────────────────────────────
+Run started: Sat Mar 14 05:32:19 PM EDT 2026
+
+╔══════════════════════════════════════╗
+║       LOG THREAT ANALYZER v1.0       ║
+║       SOC Automation Toolkit         ║
+╚══════════════════════════════════════╝
+
+[*] Analyzing: /var/log/auth.log
+[*] Brute force threshold: 5 attempts
+
+[*] Total events matched: 3
+
+========================================
+  EVENT SUMMARY
+========================================
+  SUDO_ESCALATION           3
+
+========================================
+  FAILED LOGINS BY IP
+========================================
+
+========================================
+  ⚠  PRIVILEGE ESCALATION EVENTS
+========================================
+  Line 2: [SUDO_ESCALATION] 2026-03-14T14:01:27.422077-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/var/log ; USER=root ; COMMAND=/usr/bin/systemctl enable rsyslog
+  Line 5: [SUDO_ESCALATION] 2026-03-14T14:01:36.517726-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/var/log ; USER=root ; COMMAND=/usr/bin/systemctl start rsyslog
+  Line 8: [SUDO_ESCALATION] 2026-03-14T14:04:38.027040-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/var/log ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/auth.log
+[+] Report written to /home/kali/projects/log-parser/output/report.json
+[+] Alert email sent to rohanmorar2000@gmail.com
+Run finished: Sat Mar 14 05:32:21 PM EDT 2026
+──────────────────────────────────
+Run started: Sat Mar 14 06:00:01 PM EDT 2026
+
+╔══════════════════════════════════════╗
+║       LOG THREAT ANALYZER v1.0       ║
+║       SOC Automation Toolkit         ║
+╚══════════════════════════════════════╝
+
+[*] Analyzing: /var/log/auth.log
+[*] Brute force threshold: 5 attempts
+
+[*] Total events matched: 4
+
+========================================
+  EVENT SUMMARY
+========================================
+  SUDO_ESCALATION           4
+
+========================================
+  FAILED LOGINS BY IP
+========================================
+
+========================================
+  ⚠  PRIVILEGE ESCALATION EVENTS
+========================================
+  Line 2: [SUDO_ESCALATION] 2026-03-14T14:01:27.422077-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/var/log ; USER=root ; COMMAND=/usr/bin/systemctl enable rsyslog
+  Line 5: [SUDO_ESCALATION] 2026-03-14T14:01:36.517726-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/var/log ; USER=root ; COMMAND=/usr/bin/systemctl start rsyslog
+  Line 8: [SUDO_ESCALATION] 2026-03-14T14:04:38.027040-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/var/log ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/auth.log
+  Line 93: [SUDO_ESCALATION] 2026-03-14T17:39:56.053372-04:00 kali sudo:     kali : TTY=pts/0 ; PWD=/home/kali/projects/log-parser ; USER=root ; COMMAND=/usr/bin/systemctl status cron
+[+] Report written to /home/kali/projects/log-parser/output/report.json
+[+] Alert email sent to rohanmorar2000@gmail.com
+Run finished: Sat Mar 14 06:00:03 PM EDT 2026

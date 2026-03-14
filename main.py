@@ -6,6 +6,7 @@ from parser import parse_log_file
 from alerter import analyze_events
 from utils import write_json_report, get_timestamp
 from config import LOG_FILE_PATH, OUTPUT_FILE_PATH, BRUTE_FORCE_THRESHOLD
+from notifier import send_alert
 
 init(autoreset=True)
 
@@ -85,6 +86,8 @@ def main():
         "results": results,
     }
     write_json_report(report, args.output)
+
+    send_alert(results, args.logfile, args.threshold)
 
 if __name__ == "__main__":
     main()
