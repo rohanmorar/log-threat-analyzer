@@ -16,4 +16,6 @@ LOG_PATTERNS = [
     ("SUCCESSFUL_LOGIN", r"Accepted (?:password|publickey) for (\S+) from ([\d\.]+)"),
     ("SUDO_ESCALATION", r"sudo.*USER=root.*COMMAND=(.+)"),
     ("FAILED_SU",     r"FAILED su for (\S+) by (\S+)"),
+    ("SESSION_OPENED", r"session opened for user (\S+)"),
+    ("SESSION_CLOSED", r"session closed for user (\S+)"),
 ]
